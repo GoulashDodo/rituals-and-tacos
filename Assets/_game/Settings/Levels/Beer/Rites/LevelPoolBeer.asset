@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba30d487111c98e4c9dedc3734ba5da9, type: 3}
+  m_Name: LevelPoolBeer
+  m_EditorClassIdentifier: 
+  _rites:
+  - {fileID: 11400000, guid: 574843c8b93137e41a2a05a0d17e1d14, type: 2}
+  - {fileID: 11400000, guid: 3179487a81224fe4fa243d26d1e17cab, type: 2}
+  - {fileID: 11400000, guid: c7ee739d62963a14a8216cfe2e1a0003, type: 2}
+  - {fileID: 11400000, guid: 0e36560e8985e6e49a021c5628b39902, type: 2}
+  - {fileID: 11400000, guid: d6a909319c1ffbc439f7609712c81270, type: 2}
+  - {fileID: 11400000, guid: aba34f3d2a89d5e4dbd74c25584318f2, type: 2}
+  - {fileID: 11400000, guid: 475a533b9773b4a4aaa4f86cdb17d4f9, type: 2}
+  - {fileID: 11400000, guid: 47e6c139f341def4b8c1b4c7d34e7557, type: 2}
+  - {fileID: 11400000, guid: 88917dff243015c42a51c4219c775f8a, type: 2}

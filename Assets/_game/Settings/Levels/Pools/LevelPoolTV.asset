@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba30d487111c98e4c9dedc3734ba5da9, type: 3}
+  m_Name: LevelPoolTV
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.RitualPool
+  _rites:
+  - {fileID: 11400000, guid: 574843c8b93137e41a2a05a0d17e1d14, type: 2}
+  - {fileID: 11400000, guid: 874062150c65d574687f37c854004e4e, type: 2}
+  - {fileID: 11400000, guid: a60273c9eda479b44b15c4ab34422adb, type: 2}

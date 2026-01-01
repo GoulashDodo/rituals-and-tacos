@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a464e1e17d439a4bab96d2664c5c0a2, type: 3}
+  m_Name: FunnyTVShow
+  m_EditorClassIdentifier: 
+  _itemName: Something funny...
+  _itemIcon: {fileID: 21300000, guid: daff6f57438e5aa46861575807bd0fe4, type: 3}
+  _itemSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  <ShowSprite>k__BackingField: {fileID: 21300000, guid: 801ce94d63f2204438ae9d1eb3283703, type: 3}
+  <Emoji>k__BackingField: {fileID: -8479147760187175326, guid: 3ae77cfa983e406418af2b3ba10742d1, type: 3}

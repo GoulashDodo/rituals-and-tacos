@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba30d487111c98e4c9dedc3734ba5da9, type: 3}
+  m_Name: _levelPool 2
+  m_EditorClassIdentifier: 
+  _rites:
+  - {fileID: 11400000, guid: 38c1a582475cdd74186b8f9f80f38e2b, type: 2}
+  - {fileID: 11400000, guid: 797487871cdb8784180fca431b14f19e, type: 2}
+  - {fileID: 11400000, guid: 4428d93cc50ac0049b455a9a6fa0f0bc, type: 2}
+  - {fileID: 11400000, guid: b2379912ea040c841898bf78bd749a0e, type: 2}
+  - {fileID: 11400000, guid: 501dccf35c47a604480649f28d293b7d, type: 2}
+  - {fileID: 11400000, guid: 25eb90897f03f5f49a36a1fe004126bc, type: 2}

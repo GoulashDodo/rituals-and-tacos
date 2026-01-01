@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84911a1d638a4834d9c39bbed04dfa8b, type: 3}
+  m_Name: MoonPebble
+  m_EditorClassIdentifier: 
+  _itemName: Moon pebble
+  _itemIcon: {fileID: 21300000, guid: bd7c1ffeab7d83d4883768b4caa8f02b, type: 3}
+  _itemSprites:
+  - {fileID: -454265060, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: 775340358, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: -176462001, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: -1037467766, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: -734573557, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: -1472123281, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: 1152275269, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}
+  - {fileID: 1394701726, guid: 2aa833516dc5d6947ae20c2c98948fdb, type: 3}

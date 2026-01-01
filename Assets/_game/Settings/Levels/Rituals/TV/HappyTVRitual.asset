@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
+  m_Name: HappyTVRitual
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.Ritual
+  _riteDifficulty: 1
+  _riteName: Happy happy joy joy
+  _components:
+  - RequiredItem: {fileID: 11400000, guid: 3a13f3d449182c7419f511daad47b017, type: 2}
+    Count: 1
+  _cassetteForRite: {fileID: 11400000, guid: 2f2d5b82af47a5d4b821342db42bd6ac, type: 2}
