@@ -1,5 +1,6 @@
 using _game.Scripts.Game.Gameplay.Rituals.Controllers;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals._Root
 {
     public class GameplaySceneInstaller : MonoInstaller
     {
+        
+        [InlineEditor]
         [SerializeField] private LevelSettings _levelSettings;
    
 

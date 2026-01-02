@@ -7,8 +7,11 @@ namespace _game.Scripts.Game.MainMenu.UI
     public class MainMenuUI : MonoBehaviour
     {
 
-        private LevelLoader _levelLoader;
+        [SerializeField] private GameObject _selectLevelPanel;
 
+        
+        private LevelLoader _levelLoader;
+        
 
         [Inject]
         private void Initialize(LevelLoader levelLoader)
@@ -16,11 +19,12 @@ namespace _game.Scripts.Game.MainMenu.UI
 
             _levelLoader = levelLoader;
         }
-        
-        public void Continue()
+   
+        public void OpenLevelSelectScreen()
         {
-            _levelLoader.LoadCurrentLevel();
+            _selectLevelPanel.SetActive(true);
         }
+        
         
 
     }

@@ -1,5 +1,6 @@
 ﻿using _game.Scripts.Game.Gameplay.Rituals.Levels;
 using _game.Scripts.Game.Gameplay.Rituals.Levels.Save;
+using _game.Scripts.Game.Gameplay.Rituals.Levels.Save.Progression;
 using _game.Scripts.Game.Root.Save;
 using UnityEngine;
 using Zenject;
@@ -18,7 +19,8 @@ namespace _game.Scripts.Game.Root._Root
             Container.BindInstance(_allLevels).AsSingle();
             
             Container.Bind<ILevelSaveService>().To<LevelSaveService>().AsSingle();
-            
+            Container.Bind<ILevelProgressionService>().To<LevelProgressionService>().AsSingle();
+
             Container.Bind<LevelLoader>().AsSingle().WithArguments(_allLevels).NonLazy();
 
         }

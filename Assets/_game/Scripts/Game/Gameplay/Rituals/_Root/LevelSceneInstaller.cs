@@ -1,6 +1,7 @@
 ﻿using _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions;
 using _game.Scripts.Game.Gameplay.Rituals.Conditions.Interfaces;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
+using _game.Scripts.Game.Gameplay.Rituals.Levels.Save.Progression;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals._Root
@@ -20,6 +21,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals._Root
                 .To<LivesLostCondition>()
                 .AsTransient();
 
+
+            
             Container.Bind<Level>().AsSingle().NonLazy();
         }
     }

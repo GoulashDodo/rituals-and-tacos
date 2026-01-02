@@ -2,6 +2,7 @@
 using _game.Scripts.Game.Gameplay.Rituals.Conditions.Interfaces;
 using _game.Scripts.Game.Gameplay.Rituals.Controllers;
 using _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons;
+using _game.Scripts.Game.Gameplay.Rituals.Levels.Save.Progression;
 using _game.Scripts.Game.Root._Root;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -25,36 +26,35 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         public event Action OnLevelLose;
 
         #endregion
+        private ILevelProgressionService _levelProgressionService;
 
         [Inject]
         private void Initialize(
             LevelSettings levelSettings,
             LevelLoader levelLoader,
             RitualService ritualService,
+            ILevelProgressionService levelProgressionService,
             [Inject(Id = "WinCondition")] IWinCondition winCondition,
             [Inject(Id = "LoseCondition")] ILoseCondition loseCondition)
         {
             _levelSettings = levelSettings;
             _levelLoader = levelLoader;
+            _ritualService = ritualService;
+            _levelProgressionService = levelProgressionService;
+
             _winCondition = winCondition;
             _loseCondition = loseCondition;
-            _ritualService = ritualService;
-            
-            if (_winCondition != null)
-            {
-                _winCondition.OnConditionMet += Win;
-            }
 
-            if (_loseCondition != null)
-            {
-                _loseCondition.OnConditionMet += Lose;
-            }
+            if (_winCondition != null) _winCondition.OnConditionMet += Win;
+            if (_loseCondition != null) _loseCondition.OnConditionMet += Lose;
         }
+
 
         public void StartLevel()
         {
             PauseController.Instance.ResumeGame();
             _ritualService.SetRandomRite();
+            
             
             OnLevelStarted?.Invoke();
             Debug.Log("Level started.");
@@ -65,6 +65,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
             PauseController.Instance.TogglePause();
             _levelSettings.MovementData.ResetSpeed();
             
+            
+            _levelProgressionService.UnlockNextLevel(_levelSettings.TypeId);
             OnLevelWin?.Invoke();
             Debug.Log("Level won!");
         }
