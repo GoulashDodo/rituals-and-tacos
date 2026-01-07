@@ -5,13 +5,8 @@ namespace _game.Scripts.Game.MainMenu.UI
 {
     public class FadeCanvas : MonoBehaviour
     {
-        private CanvasGroup _canvasGroup;
-
-        private void Awake()
-        {
-            _canvasGroup = GetComponent<CanvasGroup>();
-        }
-
+        [SerializeField] private CanvasGroup _canvasGroup;
+        
         public IEnumerator Fade(float targetAlpha, float duration)
         {
             float startAlpha = _canvasGroup.alpha;

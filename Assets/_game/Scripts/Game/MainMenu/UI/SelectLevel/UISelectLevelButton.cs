@@ -1,5 +1,5 @@
 ﻿using _game.Scripts.Game.Gameplay.Rituals.Levels;
-using _game.Scripts.Game.Root._Root;
+using _game.Scripts.Game.Root.LevelLoading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,12 +12,12 @@ namespace _game.Scripts.Game.MainMenu.UI.SelectLevel
         [SerializeField] private TextMeshProUGUI _levelTitle;
         [SerializeField] private Button _button;
 
-        private LevelLoader _levelLoader;
+        private ILevelLoader _levelLoader;
         private string _levelTypeId;
 
         private bool _isInitialized;
 
-        public void Initialize(LevelLoader levelLoader, bool isUnlocked, LevelSettings levelSettings)
+        public void Initialize(ILevelLoader levelLoader, bool isUnlocked, LevelSettings levelSettings)
         {
             _levelLoader = levelLoader;
             _levelTypeId = levelSettings.TypeId;

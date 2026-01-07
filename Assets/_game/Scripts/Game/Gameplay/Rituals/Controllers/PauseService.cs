@@ -13,10 +13,9 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers
 
         private GameInput _gameInput;
 
-        [Inject]
-        private void Initialize()
+        public PauseService()
         {
-            Debug.Log("InputHandler initialized");
+            Debug.Log("Pause Service initialized");
 
 
             _gameInput = new GameInput();
@@ -33,6 +32,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers
                 Debug.LogError("Pause action not found in GameInput!");
             }
         }
+
 
 
 
@@ -71,5 +71,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers
                 _gameInput.Disable();
             }
         }
+        
     }
 }

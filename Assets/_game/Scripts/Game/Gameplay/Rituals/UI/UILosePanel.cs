@@ -1,6 +1,6 @@
 using _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
-using _game.Scripts.Game.Root._Root;
+using _game.Scripts.Game.Root.LevelLoading;
 using UnityEngine;
 using Zenject;
 
@@ -11,15 +11,15 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
 
         private Level _level;
 
-        private LevelLoader _levelLoader;
+        private ILevelLoader _levelLoader;
 
         [Inject]
-        private void Initialize(Level level, LevelLoader levelLoader)
+        private void Initialize(Level level, ILevelLoader levelLoader)
         {
             _level = level;
             _levelLoader = levelLoader;
 
-            _level.OnLevelLose += OpenLosePanel;
+            _level.Lost += OpenLosePanel;
         }
 
         private void OpenLosePanel()

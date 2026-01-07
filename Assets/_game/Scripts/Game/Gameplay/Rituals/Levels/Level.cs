@@ -1,98 +1,85 @@
 ﻿using System;
+using _game.Scripts.Game.Gameplay.Rituals.Altar;
 using _game.Scripts.Game.Gameplay.Rituals.Conditions.Interfaces;
 using _game.Scripts.Game.Gameplay.Rituals.Controllers;
 using _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons;
 using _game.Scripts.Game.Gameplay.Rituals.Levels.Save.Progression;
-using _game.Scripts.Game.Root._Root;
-using UnityEngine;
-using UnityEngine.Timeline;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Levels
 {
-    public class Level : IDisposable
+    public enum LevelResult
     {
-        private LevelSettings _levelSettings;
-        private LevelLoader _levelLoader;
+        Win,
+        Lose
+    }
 
-        private IWinCondition _winCondition;
-        private ILoseCondition _loseCondition;
-        private RitualService _ritualService;
+    public  class Level : IInitializable, IDisposable
+    {
+        
+        private readonly LevelSettings _levelSettings;
+        private readonly RitualService _ritualService;
+        private readonly ILevelProgressionService _levelProgressionService;
+        private readonly IWinCondition _winCondition;
+        private readonly ILoseCondition _loseCondition;
 
-        #region EVENTS
+        public event Action Started;
+        public event Action Won;
+        public event Action Lost;
 
-        public event Action OnLevelStarted;
-        public event Action OnLevelWin;
-        public event Action OnLevelLose;
-
-        #endregion
-        private ILevelProgressionService _levelProgressionService;
-
-        [Inject]
-        private void Initialize(
+        public Level(
             LevelSettings levelSettings,
-            LevelLoader levelLoader,
             RitualService ritualService,
             ILevelProgressionService levelProgressionService,
             [Inject(Id = "WinCondition")] IWinCondition winCondition,
             [Inject(Id = "LoseCondition")] ILoseCondition loseCondition)
         {
             _levelSettings = levelSettings;
-            _levelLoader = levelLoader;
             _ritualService = ritualService;
             _levelProgressionService = levelProgressionService;
-
             _winCondition = winCondition;
             _loseCondition = loseCondition;
-
-            if (_winCondition != null) _winCondition.OnConditionMet += Win;
-            if (_loseCondition != null) _loseCondition.OnConditionMet += Lose;
         }
 
+        public void Initialize()
+        {
+            if (_winCondition != null) _winCondition.OnConditionMet += OnWinConditionMet;
+            if (_loseCondition != null) _loseCondition.OnConditionMet += OnLoseConditionMet;
+        }
 
         public void StartLevel()
         {
+            //TODO: Change this
             PauseController.Instance.ResumeGame();
             _ritualService.SetRandomRite();
-            
-            
-            OnLevelStarted?.Invoke();
-            Debug.Log("Level started.");
+
+            Started?.Invoke();
         }
 
-        private void Win()
-        {
-            PauseController.Instance.TogglePause();
-            _levelSettings.MovementData.ResetSpeed();
-            
-            
-            _levelProgressionService.UnlockNextLevel(_levelSettings.TypeId);
-            OnLevelWin?.Invoke();
-            Debug.Log("Level won!");
-        }
+        private void OnWinConditionMet() => EndLevel(LevelResult.Win);
+        private void OnLoseConditionMet() => EndLevel(LevelResult.Lose);
 
-        private void Lose()
+        private void EndLevel(LevelResult result)
         {
-            PauseController.Instance.TogglePause();
+            
+            //TODO: Change this
+            PauseController.Instance.PauseGame();
             _levelSettings.MovementData.ResetSpeed();
 
-            OnLevelLose?.Invoke();
-            Debug.Log("Level lost.");
+            if (result == LevelResult.Win)
+            {
+                _levelProgressionService.UnlockNextLevel(_levelSettings.TypeId);
+                Won?.Invoke();
+                return;
+            }
+
+            Lost?.Invoke();
         }
 
-       
         public void Dispose()
         {
-            if (_winCondition != null)
-            {
-                _winCondition.OnConditionMet -= Win;
-            }
-            
-            if (_loseCondition != null)
-            {
-                _loseCondition.OnConditionMet -= Lose;
-            }
-
+            if (_winCondition != null) _winCondition.OnConditionMet -= OnWinConditionMet;
+            if (_loseCondition != null) _loseCondition.OnConditionMet -= OnLoseConditionMet;
         }
     }
 }

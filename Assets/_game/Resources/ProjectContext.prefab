@@ -76,8 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0272777e225215340bd50a925f73de96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeCanvasPrefab: {fileID: 2783947034749653047, guid: 20ab69f24cda5dd4f8b752b5fd7b372e, type: 3}
-  _soundFXMixerGroup: {fileID: -8435302350585249093, guid: 3d21055c8cdbe12408e33e24ab2910b4, type: 2}
+  _fadeCanvasPrefab: {fileID: 2670723915706454905, guid: 20ab69f24cda5dd4f8b752b5fd7b372e, type: 3}
+  _selectedLevelRuntime: {fileID: 11400000, guid: 97e6a84e2075c2d469d1a0163a3b0723, type: 2}
+  _soundFxMixerGroup: {fileID: -8435302350585249093, guid: 3d21055c8cdbe12408e33e24ab2910b4, type: 2}
   _musicMixerGroup: {fileID: -3080673572436387371, guid: 3d21055c8cdbe12408e33e24ab2910b4, type: 2}
 --- !u!114 &2687564413668299771
 MonoBehaviour:

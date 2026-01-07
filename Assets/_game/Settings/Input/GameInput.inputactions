@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "GameInput",
     "maps": [
         {
@@ -9,7 +10,7 @@
                     "name": "MousePressed",
                     "type": "Button",
                     "id": "4a6654c5-51dc-44a8-a3e4-6dd51897ad3e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

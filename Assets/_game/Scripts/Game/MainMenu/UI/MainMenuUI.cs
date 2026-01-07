@@ -1,4 +1,4 @@
-using _game.Scripts.Game.Root._Root;
+using _game.Scripts.Game.Root.LevelLoading;
 using UnityEngine;
 using Zenject;
 
@@ -10,11 +10,11 @@ namespace _game.Scripts.Game.MainMenu.UI
         [SerializeField] private GameObject _selectLevelPanel;
 
         
-        private LevelLoader _levelLoader;
+        private ILevelLoader _levelLoader;
         
 
         [Inject]
-        private void Initialize(LevelLoader levelLoader)
+        private void Initialize(ILevelLoader levelLoader)
         {
 
             _levelLoader = levelLoader;

@@ -14,19 +14,19 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
         public void Initialize(Level level)
         {
             _level = level;
-            _level.OnLevelWin += Show;
+            _level.Won += Show;
         }
 
         private void OnEnable()
         {
             if (_level != null)
             {
-                _level.OnLevelWin += Show; 
+                _level.Won += Show; 
             }
         }
         private void OnDisable()
         {
-            _level.OnLevelWin -= Show;
+            _level.Won -= Show;
         }
         
         

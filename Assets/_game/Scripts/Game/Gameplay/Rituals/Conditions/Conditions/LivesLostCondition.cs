@@ -5,16 +5,30 @@ using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions
 {
-    public class LivesLostCondition : ILoseCondition
+    public class LivesLostCondition : ILoseCondition, IInitializable, IDisposable
     {
+        private readonly Health _health;
 
         public event Action OnConditionMet;
 
-        [Inject]
-        private void Initialize(Health health)
+        public LivesLostCondition(Health health)
         {
-            health.OnAllLivesLostInvoke += () => OnConditionMet?.Invoke();
+            _health = health;
         }
 
+        public void Initialize()
+        {
+            _health.OnAllLivesLostInvoke += OnAllLivesLost;
+        }
+
+        public void Dispose()
+        {
+            _health.OnAllLivesLostInvoke -= OnAllLivesLost;
+        }
+
+        private void OnAllLivesLost()
+        {
+            OnConditionMet?.Invoke();
+        }
     }
 }

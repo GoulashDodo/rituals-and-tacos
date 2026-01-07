@@ -1,29 +1,41 @@
-﻿using _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions;
+﻿using _game.Scripts.Game.Gameplay.Rituals.Conditions;
+using _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions;
 using _game.Scripts.Game.Gameplay.Rituals.Conditions.Interfaces;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
-using _game.Scripts.Game.Gameplay.Rituals.Levels.Save.Progression;
+using _game.Scripts.Game.Gameplay.Rituals.Levels.Save;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals._Root
 {
-    public class LevelSceneInstaller : MonoInstaller
+    public sealed class LevelSceneInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
+            BindConditions();
+            BindLevel();
+        }
 
+        private void BindConditions()
+        {
             Container.Bind<IWinCondition>()
-                .WithId("WinCondition")
+                .WithId(ConditionIds.Win)
                 .To<TargetScoreReachedCondition>()
-                .AsTransient();
+                .AsSingle();
 
             Container.Bind<ILoseCondition>()
-                .WithId("LoseCondition")
+                .WithId(ConditionIds.Lose)
                 .To<LivesLostCondition>()
-                .AsTransient();
+                .AsSingle();
+        }
 
+        private void BindLevel()
+        {
+            Container.BindInterfacesAndSelfTo<Level>().AsSingle();
 
-            
-            Container.Bind<Level>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<LevelBootstrap>().AsSingle().NonLazy();
+
+            // Eсли старт идёт от UI.
+            // Тогда изменить, чтобы UI сам вызывал StartLevel()
         }
     }
 }

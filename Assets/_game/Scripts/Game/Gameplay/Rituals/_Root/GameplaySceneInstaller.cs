@@ -1,53 +1,66 @@
 using _game.Scripts.Game.Gameplay.Rituals.Controllers;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
-using Sirenix.OdinInspector;
+using _game.Scripts.Game.Root.LevelLoading;
 using UnityEngine;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals._Root
 {
-    public class GameplaySceneInstaller : MonoInstaller
+    public sealed class GameplaySceneInstaller : MonoInstaller
     {
-        
-        [InlineEditor]
-        [SerializeField] private LevelSettings _levelSettings;
-   
+        [SerializeField] private SelectedLevelRuntime _selectedLevelRuntime;
+
+        [SerializeField] private LevelSettings _fallbackLevelSettings; // опционально, для теста/сцены в редакторе
 
         public override void InstallBindings()
         {
-            BindSettings();
-            BindControllers();
-            BindStats();
+            var levelSettings = ResolveLevelSettings();
 
-
+            BindSettings(levelSettings);
+            BindControllers(levelSettings);
+            BindStats(levelSettings);
         }
 
-        private void BindSettings()
+        private LevelSettings ResolveLevelSettings()
         {
-            Container.BindInstance(_levelSettings).AsSingle();
-            Container.BindInstance(_levelSettings.MovementData).AsSingle();
+            if (_selectedLevelRuntime != null && _selectedLevelRuntime.CurrentLevelSettings != null)
+            {
+                return _selectedLevelRuntime.CurrentLevelSettings;
+            }
 
+            if (_fallbackLevelSettings != null)
+            {
+                Debug.LogWarning("SelectedLevelRuntime is empty. Using fallback LevelSettings.");
+                return _fallbackLevelSettings;
+            }
+
+            Debug.LogError("GameplaySceneInstaller: LevelSettings not provided. " +
+                           "Make sure LevelLoader set SelectedLevelRuntime before loading Gameplay.");
+            return null;
         }
 
+        private void BindSettings(LevelSettings levelSettings)
+        {
+            Container.BindInstance(levelSettings).AsSingle();
+            Container.BindInstance(levelSettings.MovementData).AsSingle();
+        }
 
-        private void BindControllers()
+        private void BindControllers(LevelSettings levelSettings)
         {
             Container.Bind<RitualService>()
                 .AsSingle()
-                .WithArguments(_levelSettings.LevelRitualPool);
-        
+                .WithArguments(levelSettings.LevelRitualPool);
         }
 
-        private void BindStats()
+        private void BindStats(LevelSettings levelSettings)
         {
             Container.Bind<Score>()
                 .AsSingle()
-                .WithArguments(_levelSettings.TargetScoreCount);
+                .WithArguments(levelSettings.TargetScoreCount);
 
             Container.Bind<Health>()
                 .AsSingle()
-                .WithArguments(_levelSettings.AmountOfLivesOnLevel, _levelSettings.LivesLostOnMiss);
+                .WithArguments(levelSettings.AmountOfLivesOnLevel, levelSettings.LivesLostOnMiss);
         }
-
     }
 }

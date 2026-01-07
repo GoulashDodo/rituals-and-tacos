@@ -1,6 +1,6 @@
 ﻿using _game.Scripts.Game.Gameplay.Rituals.Levels;
 using _game.Scripts.Game.Gameplay.Rituals.Levels.Save;
-using _game.Scripts.Game.Root._Root;
+using _game.Scripts.Game.Root.LevelLoading;
 using UnityEngine;
 using Zenject;
 
@@ -12,10 +12,10 @@ namespace _game.Scripts.Game.MainMenu.UI.SelectLevel
 
         private AllLevelSettings _levelSettings;
         private ILevelSaveService _levelSaveService;
-        private LevelLoader _levelLoader;
+        private ILevelLoader _levelLoader;
 
         [Inject]
-        public void Construct(AllLevelSettings levelSettings, ILevelSaveService levelSaveService, LevelLoader levelLoader)
+        public void Construct(AllLevelSettings levelSettings, ILevelSaveService levelSaveService, ILevelLoader levelLoader)
         {
             _levelSettings = levelSettings;
             _levelSaveService = levelSaveService;

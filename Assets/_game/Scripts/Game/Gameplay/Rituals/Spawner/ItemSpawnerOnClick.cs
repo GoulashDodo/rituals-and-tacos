@@ -1,63 +1,30 @@
 using _game.Scripts.Game.Gameplay.Rituals.Items;
+using _game.Scripts.Game.Root.Input.MouseClickable.Interfaces;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
 {
-    public class ItemSpawnerOnClick : ItemSpawner
+    public sealed class ItemSpawnerOnClick : ItemSpawner, ILeftButtonPressable
     {
-        private GameInput _gameInput;
-
-        [Inject]
-        private void Initialize(GameInput gameInput)
+        public void OnLeftButtonPressed(Vector3 worldPoint)
         {
-            _gameInput = gameInput;
+            Debug.Log("OnLeftButtonPressed");
+            var hit = Physics2D.OverlapPoint(worldPoint);
+            if (hit == null || hit.gameObject != gameObject)
+            {
+                return;
+            }
+
+            SpawnAndDrag(worldPoint);
         }
 
-        private void OnEnable()
+        private void SpawnAndDrag(Vector3 worldPoint)
         {
-            _gameInput.Gameplay.Enable();
-            _gameInput.Gameplay.MousePressed.performed += MousePressed;
-        }
-
-        private void OnDisable()
-        {
-            _gameInput.Gameplay.MousePressed.performed -= MousePressed;
-            _gameInput.Gameplay.Disable();
-        }
-
-        private void SpawnObject()
-        {
-            DraggableItem newItem = SpawnObject(GetMouseWorldPosition());
-
+            DraggableItem newItem = SpawnObject(worldPoint);
             if (newItem != null)
             {
                 newItem.StartDragging();
             }
-        }
-
-        private void MousePressed(InputAction.CallbackContext context)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(GetMouseWorldPosition(), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject == this.gameObject)
-            {
-                SpawnObject();
-            }
-        }
-
-        private Vector3 GetMouseWorldPosition()
-        {
-            if (Camera.main == null)
-            {
-                Debug.LogError("Main camera not found!");
-                return Vector3.zero;
-            }
-
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-            return worldPosition;
         }
     }
 }
