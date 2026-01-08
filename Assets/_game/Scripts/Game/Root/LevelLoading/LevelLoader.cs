@@ -116,7 +116,6 @@ namespace _game.Scripts.Game.Root.LevelLoading
                 return;
             }
 
-            // Тут можно сделать “мгновенную” выгрузку (без fade) или через SceneLoader.Unload()
             _sceneLoader.Unload(_loadedAdditiveLevelSceneName);
             _loadedAdditiveLevelSceneName = null;
         }

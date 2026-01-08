@@ -1,6 +1,7 @@
 ﻿using System;
 using _game.Scripts.Game.Gameplay.Rituals.Conditions.Interfaces;
 using _game.Scripts.Game.Gameplay.Rituals.Controllers;
+using UnityEngine;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions
@@ -14,6 +15,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions
         public TargetScoreReachedCondition(Score score)
         {
             _score = score;
+            Initialize();
         }
 
         public void Initialize()
@@ -29,6 +31,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions
         private void OnTargetScoreReached()
         {
             OnConditionMet?.Invoke();
+
         }
     }
 }

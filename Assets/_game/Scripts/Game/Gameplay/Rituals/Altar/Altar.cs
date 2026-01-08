@@ -9,7 +9,7 @@ using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Altar
 {
-    public sealed class Altar : MonoBehaviour, IPlaceableSurface
+    public class Altar : MonoBehaviour, IPlaceableSurface
     {
         [SerializeField] private Transform[] _wayPoints;
 

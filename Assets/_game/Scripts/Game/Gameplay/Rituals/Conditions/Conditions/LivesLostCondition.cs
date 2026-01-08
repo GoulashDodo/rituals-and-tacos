@@ -14,6 +14,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Conditions.Conditions
         public LivesLostCondition(Health health)
         {
             _health = health;
+            Initialize();   
         }
 
         public void Initialize()

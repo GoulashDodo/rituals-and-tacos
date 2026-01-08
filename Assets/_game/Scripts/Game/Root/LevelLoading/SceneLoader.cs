@@ -27,8 +27,8 @@ namespace _game.Scripts.Game.Root.LevelLoading
         public SceneLoader(FadeCanvas fadeCanvas)
         {
             _fadeCanvas = fadeCanvas;
-            _fadeOutDuration = 0.5f;
-            _fadeInDuration = 0.5f;
+            _fadeOutDuration = 1f;
+            _fadeInDuration = 1f;
         }
 
        public void LoadSingle(string sceneName)
@@ -87,17 +87,9 @@ namespace _game.Scripts.Game.Root.LevelLoading
         private IEnumerator LoadSingleThenAdditiveRoutine(string singleSceneName, string additiveSceneName)
         {
             yield return FadeOut();
-
-            if (SceneManager.GetActiveScene().name != singleSceneName)
-            {
-                yield return LoadSceneAsync(singleSceneName, LoadSceneMode.Single);
-            }
-
-
-            if (!IsLoaded(additiveSceneName))
-            {
-                yield return LoadSceneAsync(additiveSceneName, LoadSceneMode.Additive);
-            }
+            
+            yield return LoadSceneAsync(singleSceneName, LoadSceneMode.Single);
+            yield return LoadSceneAsync(additiveSceneName, LoadSceneMode.Additive);
 
             yield return FadeIn();
         }

@@ -32,10 +32,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals._Root
         {
             Container.BindInterfacesAndSelfTo<Level>().AsSingle();
 
-            Container.BindInterfacesTo<LevelBootstrap>().AsSingle().NonLazy();
-
-            // Eсли старт идёт от UI.
-            // Тогда изменить, чтобы UI сам вызывал StartLevel()
         }
     }
 }

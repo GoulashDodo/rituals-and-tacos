@@ -8,7 +8,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
     {
         public void OnLeftButtonPressed(Vector3 worldPoint)
         {
-            Debug.Log("OnLeftButtonPressed");
             var hit = Physics2D.OverlapPoint(worldPoint);
             if (hit == null || hit.gameObject != gameObject)
             {

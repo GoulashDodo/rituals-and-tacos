@@ -22,8 +22,7 @@ namespace _game.Scripts.Game.Root.Input.MouseClickable
 
             _camera = Camera.main;
 
-            Debug.Log($"Gameplay enabled: {_gameInput.Gameplay.enabled}");
-            Debug.Log($"MousePressed enabled: {_gameInput.Gameplay.MousePressed.enabled}");
+
             
             _gameInput.Gameplay.Enable(); 
 
@@ -42,7 +41,6 @@ namespace _game.Scripts.Game.Root.Input.MouseClickable
 
         private void HandleLeftMousePressed(InputAction.CallbackContext context)
         {
-            Debug.Log("HandleLeftMousePressed");
             
             if (!TryGetMouseWorldPoint(out var worldPoint))
             {
@@ -63,7 +61,6 @@ namespace _game.Scripts.Game.Root.Input.MouseClickable
 
         private void HandleLeftMouseReleased(InputAction.CallbackContext context)
         {
-            Debug.Log("HandleLeftMouseReleased");
             
             if (!TryGetMouseWorldPoint(out var worldPoint))
             {

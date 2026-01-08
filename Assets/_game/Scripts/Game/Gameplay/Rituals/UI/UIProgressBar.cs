@@ -45,7 +45,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
             }
 
             _tween = _slider.DOValue(target, _timeToChange)
-                .SetEase(Ease.InQuad);
+                .SetEase(Ease.Linear);
         }
     }
 }

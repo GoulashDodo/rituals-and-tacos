@@ -182,7 +182,8 @@ MonoBehaviour:
       m_Calls: []
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
-  _parentContractNames: []
+  _parentContractNames:
+  - Gameplay
 --- !u!4 &1932423580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8154782510109655054, guid: 682ad03cbe609d34c9a859729565b942, type: 3}

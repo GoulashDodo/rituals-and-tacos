@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 43871398}
   - component: {fileID: 43871401}
+  - component: {fileID: 43871402}
   m_Layer: 0
   m_Name: __SCENE__
   m_TagString: Untagged
@@ -182,6 +183,18 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!114 &43871402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43871397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75b6f9bf0681984eb8a2963038c830d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Common.Development.LevelUnlocker
 --- !u!1 &160247750
 GameObject:
   m_ObjectHideFlags: 0
