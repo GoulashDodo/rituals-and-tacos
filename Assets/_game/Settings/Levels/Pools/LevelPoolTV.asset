@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LevelPoolTV
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.RitualPool
   _rites:
-  - {fileID: 11400000, guid: 574843c8b93137e41a2a05a0d17e1d14, type: 2}
-  - {fileID: 11400000, guid: 874062150c65d574687f37c854004e4e, type: 2}
-  - {fileID: 11400000, guid: a60273c9eda479b44b15c4ab34422adb, type: 2}
-  - {fileID: 11400000, guid: c6cbdaf307194cd41bcf62558f619cfb, type: 2}
-  - {fileID: 11400000, guid: 475193be3ea783447a630eb99b2cce4c, type: 2}
+  - {fileID: 11400000, guid: 3179487a81224fe4fa243d26d1e17cab, type: 2}
+  - {fileID: 11400000, guid: 47e6c139f341def4b8c1b4c7d34e7557, type: 2}
+  - {fileID: 11400000, guid: 25eb90897f03f5f49a36a1fe004126bc, type: 2}
+  - {fileID: 11400000, guid: 8a520a9b6d490904899b5446002c21d5, type: 2}
+  - {fileID: 11400000, guid: 0d537ef6b139ebd4887ed1cdc75d1350, type: 2}
