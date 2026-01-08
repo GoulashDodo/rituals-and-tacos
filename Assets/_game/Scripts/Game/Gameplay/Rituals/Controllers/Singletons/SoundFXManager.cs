@@ -58,13 +58,11 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
                 },
                 actionOnRelease: source =>
                 {
-                    // ВАЖНО: именно тут должна быть логика "вернуть в пул"
                     source.Stop();
                     source.clip = null;
                     source.loop = false;
                     source.volume = 1f;
                     source.pitch = 1f;
-                    source.time = 0f;
 
                     source.gameObject.SetActive(false);
                     _activeSources.Remove(source);

@@ -16,6 +16,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
         private SpriteRenderer _spriteRenderer;
         private ParticleSystem _particle;
 
+        private static int _counter;
+        
         private void Awake()
         {
             _altarItem = GetComponent<PlaceableItem>();
@@ -35,6 +37,9 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
         {
             _altarItem.OnItemDropped += ShowParticle;
             _altarItem.OnItemPlaced += PlayPlaceOnAltarSound;
+            
+            _spriteRenderer.sortingOrder = _counter++;
+
         }
 
         private void OnDisable()
