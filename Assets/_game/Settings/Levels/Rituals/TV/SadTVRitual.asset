@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SadTVRitual
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.Ritual
   _riteDifficulty: 1
-  _riteName: Sad Sad  Depression  Depressionn
+  _riteName: Late Night Emotional Damage
   _components:
-  - RequiredItem: {fileID: 11400000, guid: 3a13f3d449182c7419f511daad47b017, type: 2}
+  - RequiredItem: {fileID: 11400000, guid: 6ce94f2ba715e1c4896ac5a308e270eb, type: 2}
     Count: 1
   _cassetteForRite: {fileID: 11400000, guid: e3671d8e5b3a14c4793eeec97052a6f1, type: 2}

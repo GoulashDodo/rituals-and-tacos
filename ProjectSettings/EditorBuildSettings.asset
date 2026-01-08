@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_game/Scenes/Levels/Level_TV.unity
     guid: e43c0602adaa2ef4b8f8e8d4efa7c0cf
+  - enabled: 1
+    path: Assets/_game/Scenes/Levels/Level_Babysitting.unity
+    guid: 0082e3b5449576a4fa6abac6b6cc42ba
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9a494eb76bd226447951736aadd367c5, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 4830e1da617453a48a27018e79a368e0, type: 2}

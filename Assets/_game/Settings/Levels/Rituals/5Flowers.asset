@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad382c9d48efcc40924028e878ad407, type: 3}
-  m_Name: AltarMovementLevel1
+  m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
+  m_Name: 5Flowers
   m_EditorClassIdentifier: 
-  _initialSpeed: 2
-  _maxSpeed: 2
-  _accelerationMultiplier: 0.05
+  _riteDifficulty: 5
+  _riteName: Army of the Dead
+  _components:
+  - RequiredItem: {fileID: 11400000, guid: d7233ebe41ef0d9488d178b6896b562f, type: 2}
+    Count: 5

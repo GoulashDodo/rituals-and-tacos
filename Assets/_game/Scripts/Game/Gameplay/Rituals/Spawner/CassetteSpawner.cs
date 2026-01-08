@@ -12,7 +12,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
 
         private RitualService _ritualService; 
 
-        private int _currentTVShowIndex = 0;
+        private int _currentTVShowIndex;
 
         [SerializeField] private CassetteData[] _cassettes;
         private CassetteData _currentCassette;
@@ -24,9 +24,14 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
         {
             _ritualService = ritualService;
         }
+        
+        
         private void OnEnable()
         {
-            _ritualService.OnCurrentRitualChanged += HandleRitualChanged;
+            if (_ritualService != null)
+            {
+                _ritualService.OnCurrentRitualChanged += HandleRitualChanged;
+            }
         }
 
         private void OnDisable()
@@ -95,10 +100,10 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
 
             if(_currentCassette == null)
             {
-                throw new Exception("The cassetes are not set correctly!");
+                throw new Exception("The cassettes are not set correctly!");
             }
 
-            OnCurrentTVShowChanged.Invoke(_currentCassette);
+            OnCurrentTVShowChanged?.Invoke(_currentCassette);
         }
 
 

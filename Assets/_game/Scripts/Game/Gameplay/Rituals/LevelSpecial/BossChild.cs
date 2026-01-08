@@ -2,7 +2,9 @@ using System;
 using _game.Scripts.Game.Gameplay.Rituals.Altar;
 using _game.Scripts.Game.Gameplay.Rituals.Items;
 using _game.Scripts.Game.Gameplay.Rituals.Items.Data;
+using _game.Scripts.Game.Gameplay.Rituals.Levels;
 using UnityEngine;
+using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
 {
@@ -22,10 +24,19 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
         private float _timer;
         private HungerLevel _currentHungerLevel = HungerLevel.Full;
 
+        private Level _level;
+        
         public event Action<int> OnHungerChanged;
         public event Action OnFullStarvation;
         public event Action OnItemEaten;
 
+
+        [Inject]
+        public void Construct(Level level)
+        {
+            _level = level;
+        }
+        
         private void Start()
         {
             OnHungerChanged?.Invoke((int)_currentHungerLevel); 
@@ -42,7 +53,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
             }
         }
 
-        public void PlaceItem(GameObject itemGO, ItemData itemData)
+        public void PlaceItem(GameObject itemGo, ItemData itemData)
         {
             if (itemData is FoodData foodData)
             {
@@ -50,7 +61,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
                 ResetTimer();
             }
 
-            if (itemGO.TryGetComponent(out PlaceableItem item))
+            if (itemGo.TryGetComponent(out PlaceableItem item))
             {
                 item.transform.SetParent(null);
                 item.ReturnToPool();
@@ -72,6 +83,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
             {
                 Debug.Log("Hunger level reached full starvation!");
                 OnFullStarvation?.Invoke();
+                _level.EndLevel(LevelResult.Lose, "Feed the baby");
             }
         }
 

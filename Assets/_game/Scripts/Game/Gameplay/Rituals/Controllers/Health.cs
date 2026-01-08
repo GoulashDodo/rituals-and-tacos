@@ -65,7 +65,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers
 
         }
 
-        public void LoseLives(int livesAmount)
+        private void LoseLives(int livesAmount)
         {
             if (livesAmount <= 0)
             {
@@ -77,7 +77,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers
 
                 _currentLivesAmount = 0;
 
-                OnAllLivesLostInvoke.Invoke();
+                OnAllLivesLostInvoke?.Invoke();
 
             }
             else

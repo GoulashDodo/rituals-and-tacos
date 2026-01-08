@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
-  m_Name: InLoveOfAlenaShvetz
-  m_EditorClassIdentifier: 
-  _riteDifficulty: 5
-  _riteName: Please step on me
+  m_Name: ScaryTVRitual
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.Ritual
+  _riteDifficulty: 2
+  _riteName: Cat Ghost
   _components:
   - RequiredItem: {fileID: 11400000, guid: 3a13f3d449182c7419f511daad47b017, type: 2}
-    Count: 15
+    Count: 2
+  _cassetteForRite: {fileID: 11400000, guid: 922c8a79d541d2043b7f5ec0145a500b, type: 2}

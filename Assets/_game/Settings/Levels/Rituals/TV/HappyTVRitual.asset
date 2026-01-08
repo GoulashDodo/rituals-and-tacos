@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
   m_Name: HappyTVRitual
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.Ritual
-  _riteDifficulty: 1
-  _riteName: Happy happy joy joy
+  _riteDifficulty: 2
+  _riteName: Happy Happy Joy Joy!
   _components:
-  - RequiredItem: {fileID: 11400000, guid: 3a13f3d449182c7419f511daad47b017, type: 2}
-    Count: 1
+  - RequiredItem: {fileID: 11400000, guid: d7233ebe41ef0d9488d178b6896b562f, type: 2}
+    Count: 3
   _cassetteForRite: {fileID: 11400000, guid: 2f2d5b82af47a5d4b821342db42bd6ac, type: 2}

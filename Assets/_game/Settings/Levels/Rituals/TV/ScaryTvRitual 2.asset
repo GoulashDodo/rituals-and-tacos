@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
-  m_Name: 5Photos
-  m_EditorClassIdentifier: 
+  m_Name: ScaryTvRitual 2
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Rituals.Ritual
   _riteDifficulty: 5
-  _riteName: Army of the Dead
+  _riteName: Death Files
   _components:
+  - RequiredItem: {fileID: 11400000, guid: 6ce94f2ba715e1c4896ac5a308e270eb, type: 2}
+    Count: 2
   - RequiredItem: {fileID: 11400000, guid: d7233ebe41ef0d9488d178b6896b562f, type: 2}
-    Count: 5
+    Count: 1
+  _cassetteForRite: {fileID: 11400000, guid: 922c8a79d541d2043b7f5ec0145a500b, type: 2}

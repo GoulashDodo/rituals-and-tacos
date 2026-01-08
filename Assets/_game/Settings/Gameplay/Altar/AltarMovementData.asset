@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad382c9d48efcc40924028e878ad407, type: 3}
   m_Name: AltarMovementData
   m_EditorClassIdentifier: 
-  _initialSpeed: 2
-  _maxSpeed: 5
+  _initialSpeed: 1
+  _maxSpeed: 2
   _accelerationMultiplier: 0.05
