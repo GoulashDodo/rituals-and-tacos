@@ -91,7 +91,12 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Altar
             _isMoving = true;
         }
 
+        
         private void OnLevelFinished()
+        {
+            _isMoving = false;
+        }
+        private void OnLevelFinished(string _)
         {
             _isMoving = false;
         }

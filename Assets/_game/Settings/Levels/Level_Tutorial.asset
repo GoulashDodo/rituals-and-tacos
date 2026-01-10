@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level_Tutorial
   m_EditorClassIdentifier: 
   <TypeId>k__BackingField: Level_Tutorial
+  <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
   <UnlockedByDefault>k__BackingField: 1
   <Title>k__BackingField: Tutorial
   <TargetScoreCount>k__BackingField: 10

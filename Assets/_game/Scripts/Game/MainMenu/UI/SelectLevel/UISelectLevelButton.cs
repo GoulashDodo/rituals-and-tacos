@@ -25,8 +25,7 @@ namespace _game.Scripts.Game.MainMenu.UI.SelectLevel
             _button.interactable = isUnlocked;
             _levelTitle.text = levelSettings.Title;
 
-            // Если нужно — выставляй спрайт
-            // _levelImage.sprite = levelSettings.Sprite;
+            _levelImage.sprite = levelSettings.Icon;
 
             if (!_isInitialized)
             {

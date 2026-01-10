@@ -11,6 +11,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
     {
 
         [field: SerializeField] public string TypeId { get; private set; }
+        [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public bool UnlockedByDefault { get; private set; } = false;
         
         

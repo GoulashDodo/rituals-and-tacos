@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level_Default
   m_EditorClassIdentifier: 
   <TypeId>k__BackingField: Level_Default
+  <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
   <UnlockedByDefault>k__BackingField: 0
-  <Title>k__BackingField: ... and Rituals
+  <Title>k__BackingField: and Rituals
   <TargetScoreCount>k__BackingField: 20
   <LevelRitualPool>k__BackingField: {fileID: 11400000, guid: 1f9ba85f7ac71664ba3d55dc4a8e031d, type: 2}
-  <MovementData>k__BackingField: {fileID: 11400000, guid: 871ae5c3ff3fb2f4ea911cd1c2469b6e, type: 2}
+  <MovementData>k__BackingField: {fileID: 11400000, guid: f8989652da5ca57479f7a278a08826e3, type: 2}
   <AmountOfLivesOnLevel>k__BackingField: 5
   <LivesLostOnMiss>k__BackingField: 1

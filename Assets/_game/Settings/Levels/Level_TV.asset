@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level_TV
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Levels.LevelSettings
   <TypeId>k__BackingField: Level_TV
+  <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
   <UnlockedByDefault>k__BackingField: 0
   <Title>k__BackingField: Get your free TVs!
   <TargetScoreCount>k__BackingField: 25

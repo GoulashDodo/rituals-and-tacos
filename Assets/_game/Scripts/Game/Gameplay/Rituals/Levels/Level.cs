@@ -25,7 +25,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
 
         public event Action Started;
         public event Action Won;
-        public event Action Lost;
+        public event Action<string> Lost;
 
         public Level(
             LevelSettings levelSettings,
@@ -61,7 +61,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         private void OnWinConditionMet() => EndLevel(LevelResult.Win);
         private void OnLoseConditionMet() => EndLevel(LevelResult.Lose);
 
-        public string EndLevel(LevelResult result, string message = "Null")
+        public void EndLevel(LevelResult result, string message = "")
         {
             
             //TODO: Change this
@@ -72,12 +72,11 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
             {
                 _levelProgressionService.UnlockNextLevel(_levelSettings.TypeId);
                 Won?.Invoke();
-                return message;
+                return;
             }
 
-            Lost?.Invoke();
+            Lost?.Invoke(message);
             
-            return message;
         }
 
         public void Dispose()

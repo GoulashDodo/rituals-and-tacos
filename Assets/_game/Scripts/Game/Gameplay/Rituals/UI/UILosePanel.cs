@@ -1,6 +1,7 @@
 using _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons;
 using _game.Scripts.Game.Gameplay.Rituals.Levels;
 using _game.Scripts.Game.Root.LevelLoading;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
 
         private ILevelLoader _levelLoader;
 
+        [SerializeField] private TextMeshProUGUI _text;
+        
         [Inject]
         private void Initialize(Level level, ILevelLoader levelLoader)
         {
@@ -22,9 +25,10 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
             _level.Lost += OpenLosePanel;
         }
 
-        private void OpenLosePanel()
+        private void OpenLosePanel(string loseReason)
         {
             gameObject.SetActive(true);
+            _text.text = loseReason;
         }
 
 

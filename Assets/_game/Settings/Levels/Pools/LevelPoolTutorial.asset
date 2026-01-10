@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba30d487111c98e4c9dedc3734ba5da9, type: 3}
-  m_Name: _levelPool 1
+  m_Name: LevelPoolTutorial
   m_EditorClassIdentifier: 
   _rites:
   - {fileID: 11400000, guid: 10eef13ec96b0754a805568f22b68436, type: 2}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64790772c19479d8c27a256684e0407, type: 3}
   m_Name: Game_Runtime_Selected Level
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Root.LevelLoading.SelectedLevelRuntime
-  <CurrentLevelSettings>k__BackingField: {fileID: 0}
+  <CurrentLevelSettings>k__BackingField: {fileID: 11400000, guid: 77f9adf12cc9b3240aefa47b45940c68, type: 2}
