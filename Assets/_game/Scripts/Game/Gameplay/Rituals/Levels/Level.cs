@@ -53,6 +53,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         {
             //TODO: Change this
             PauseController.Instance.ResumeGame();
+            _levelSettings.MovementData.ResetSpeed();
+
             _ritualService.SetRandomRite();
 
             Started?.Invoke();
@@ -64,9 +66,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         public void EndLevel(LevelResult result, string message = "")
         {
             
-            //TODO: Change this
-            PauseController.Instance.PauseGame();
-            _levelSettings.MovementData.ResetSpeed();
 
             if (result == LevelResult.Win)
             {

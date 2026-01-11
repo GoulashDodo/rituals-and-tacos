@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea34678ae23b0f943ae18b6fbaff454d, type: 3}
-  m_Name: Level_TV
+  m_Name: Level_Jar
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Levels.LevelSettings
-  <TypeId>k__BackingField: Level_TV
+  <TypeId>k__BackingField: Level_Jar
   <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
   <UnlockedByDefault>k__BackingField: 0
-  <Title>k__BackingField: Get your free TVs!
+  <Title>k__BackingField: 1 Ritual 1 Jar
   <TargetScoreCount>k__BackingField: 25
-  <LevelRitualPool>k__BackingField: {fileID: 11400000, guid: 23a2f980fea85304eb7392fdae249897, type: 2}
+  <LevelRitualPool>k__BackingField: {fileID: 11400000, guid: 64dba6176de6b3b488789189c72a8ecf, type: 2}
   <MovementData>k__BackingField: {fileID: 11400000, guid: 871ae5c3ff3fb2f4ea911cd1c2469b6e, type: 2}
   <AmountOfLivesOnLevel>k__BackingField: 5
   <LivesLostOnMiss>k__BackingField: 1

@@ -1,14 +1,15 @@
+using _game.Scripts.Game.Root.Input.MouseClickable.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Items
 {
-    public class DraggableItem : MonoBehaviour, IDraggable
+    public class DraggableItem : MonoBehaviour, IDraggable, ILeftButtonPressable, ILeftButtonReleasable
     {
         [SerializeField] private LayerMask _draggableLayerMask;
 
-        private UnityEngine.Camera _mainCamera;
+        private Camera _mainCamera;
         private GameInput _gameInput;
         private Vector3 _offset;
         private bool _isDragging;
@@ -21,29 +22,14 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
 
         protected virtual void Awake()
         {
-            _mainCamera = UnityEngine.Camera.main;
+            _mainCamera = Camera.main;
             if (_mainCamera == null)
             {
                 Debug.LogError("Main camera not found!");
             }
         }
 
-        private void OnEnable()
-        {
-            if (_gameInput == null)
-            {
-                return;
-            }
 
-            _gameInput.Gameplay.MousePressed.performed += MousePressed;
-            _gameInput.Gameplay.MousePressed.canceled += MouseReleased;
-        }
-
-        private void OnDisable()
-        {
-            _gameInput.Gameplay.MousePressed.performed -= MousePressed;
-            _gameInput.Gameplay.MousePressed.canceled -= MouseReleased;
-        }
 
         protected virtual void Update()
         {
@@ -69,21 +55,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
             _isDragging = false;
         }
 
-        private void MousePressed(InputAction.CallbackContext context)
-        {
-            if (TryGetNearestCollider(out var nearestCollider) && nearestCollider.gameObject == gameObject)
-            {
-                StartDragging();
-            }
-        }
-
-        private void MouseReleased(InputAction.CallbackContext context)
-        {
-            if (TryGetNearestCollider(out var nearestCollider) && nearestCollider.gameObject == gameObject)
-            {
-                Drop();
-            }
-        }
 
         private Vector3 GetMouseWorldPosition()
         {
@@ -95,26 +66,16 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
             return worldPosition;
         }
 
-        private bool TryGetNearestCollider(out Collider2D nearestCollider)
+
+
+        public void OnLeftButtonPressed(Vector3 mousePosition)
         {
-            Vector2 worldPosition = GetMouseWorldPosition();
-            Collider2D[] colliders = Physics2D.OverlapPointAll(worldPosition, _draggableLayerMask);
+            StartDragging();
+        }
 
-            nearestCollider = null;
-            float nearestDistance = float.MaxValue;
-
-            foreach (var collider in colliders)
-            {
-                float distance = Vector2.Distance(worldPosition, collider.transform.position);
-
-                if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    nearestCollider = collider;
-                }
-            }
-
-            return nearestCollider != null;
+        public void OnLeftButtonReleased(Vector3 mousePosition)
+        {
+            Drop();
         }
     }
 }

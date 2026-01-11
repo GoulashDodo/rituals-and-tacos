@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1303594809
       objectReference: {fileID: 0}
+    - target: {fileID: 2072972879528437671, guid: 1f4a66eaed36bf64da1ddda1c35e4b30, type: 3}
+      propertyPath: _timeToGetHungry
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4980777375395931491, guid: 1f4a66eaed36bf64da1ddda1c35e4b30, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.43

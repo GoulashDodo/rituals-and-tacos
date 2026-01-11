@@ -1,24 +1,17 @@
-using System.Collections.Generic;
-using _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons;
 using _game.Scripts.Game.Gameplay.Rituals.Items;
 using UnityEngine;
-using UnityEngine.Pool;
 using Zenject;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
 {
     public class ItemSpawner : MonoBehaviour
     {
-        private readonly Dictionary<PlaceableItem, ObjectPool<PlaceableItem>> _pools = new Dictionary<PlaceableItem, ObjectPool<PlaceableItem>>();
-        private ObjectPool<PlaceableItem> _currentPool;
-
-        [SerializeField] private int _initialSpawnedGoCount = 10;
         [SerializeField] private PlaceableItem _defaultPrefab;
 
-        private bool _canSpawnObjects = true;
-        private DiContainer _container; 
+        private DiContainer _container;
+        private PlaceableItem _currentPrefab;
 
-        [Inject] 
+        [Inject]
         private void Construct(DiContainer container)
         {
             _container = container;
@@ -30,12 +23,9 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
             {
                 SwitchToPrefab(_defaultPrefab);
             }
-
-            PauseController.Instance?.OnGamePaused?.AddListener(() => _canSpawnObjects = false);
-            PauseController.Instance?.OnGameResumed?.AddListener(() => _canSpawnObjects = true);
         }
 
-        private void SwitchToPrefab(PlaceableItem prefab)
+        public void SwitchToPrefab(PlaceableItem prefab)
         {
             if (prefab == null)
             {
@@ -43,45 +33,25 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Spawner
                 return;
             }
 
-            if (_pools.TryGetValue(prefab, out var existingPool))
-            {
-                _currentPool = existingPool;
-            }
-            else
-            {
-                _currentPool = CreatePoolForPrefab(prefab);
-            }
+            _currentPrefab = prefab;
         }
 
-        private ObjectPool<PlaceableItem> CreatePoolForPrefab(PlaceableItem prefab)
+        public PlaceableItem SpawnObject(Vector2 position)
         {
-            var newPool = new ObjectPool<PlaceableItem>(
-                () => _container.InstantiatePrefabForComponent<PlaceableItem>(prefab, this.transform),
-                item => item.gameObject.SetActive(true),
-                item => item.gameObject.SetActive(false),
-                maxSize: _initialSpawnedGoCount
-            );
-
-            _pools[prefab] = newPool;
-            return newPool;
-        }
-
-        protected PlaceableItem SpawnObject(Vector2 position)
-        {
-            if (!_canSpawnObjects || _currentPool == null)
+            if (_currentPrefab == null)
             {
-                Debug.LogWarning("Cannot spawn objects. Either spawning is disabled or no pool is selected.");
+                Debug.LogWarning("No prefab selected. Cannot spawn.");
                 return null;
             }
 
-            var item = _currentPool.Get();
-            _container.Inject(item); 
-            item.Initialize(_currentPool);
+            // Zenject сам сделает inject, если он есть в компонентах префаба
+            var item = _container.InstantiatePrefabForComponent<PlaceableItem>(_currentPrefab, transform);
             item.transform.position = position;
+
+            // Если хочешь — можно прокинуть сюда контекст/спавнер (см. ниже)
+            item.Initialize();
 
             return item;
         }
     }
 }
-
-

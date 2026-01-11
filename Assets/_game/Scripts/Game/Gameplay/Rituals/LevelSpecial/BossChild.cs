@@ -64,7 +64,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
             if (itemGo.TryGetComponent(out PlaceableItem item))
             {
                 item.transform.SetParent(null);
-                item.ReturnToPool();
+                item.DisposeItem();
 
                 OnItemEaten?.Invoke();
             }

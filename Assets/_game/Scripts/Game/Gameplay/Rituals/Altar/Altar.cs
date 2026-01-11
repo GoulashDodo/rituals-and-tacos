@@ -161,7 +161,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Altar
                 if (child.TryGetComponent(out PlaceableItem item))
                 {
                     child.SetParent(null);
-                    item.ReturnToPool();
+                    item.DisposeItem();
                 }
                 else
                 {

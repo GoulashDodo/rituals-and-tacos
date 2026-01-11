@@ -2,14 +2,11 @@
 using _game.Scripts.Game.Gameplay.Rituals.Altar;
 using _game.Scripts.Game.Gameplay.Rituals.Items.Data;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Items
 {
     public class PlaceableItem : DraggableItem
     {
-        #region FIELDS
-
         public ItemData ItemData => _itemData;
         public bool IsPlaced => _isPlaced;
 
@@ -17,22 +14,14 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
 
         private bool _isPlaced;
         private IPlaceableSurface _nearestSurface;
-        private ObjectPool<PlaceableItem> _pool;
-
-        #endregion
-
-        #region EVENTS
 
         public event Action OnItemDropped;
         public event Action OnItemPlaced;
 
-        #endregion
-
-
-
-        public void Initialize(ObjectPool<PlaceableItem> pool)
+        // Оставил метод, чтобы сохранить общий контракт (вдруг где-то вызывается)
+        public void Initialize()
         {
-            _pool = pool;
+            ResetState();
         }
 
         public override void Drag()
@@ -53,32 +42,29 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
             else
             {
                 OnItemDropped?.Invoke();
-                ReturnToPool();
+                DisposeItem();
+
             }
 
             base.Drop();
+            
         }
 
-        public void ReturnToPool()
+        public void DisposeItem()
+        {
+            ResetState();
+            Destroy(gameObject);
+        }
+
+        private void ResetState()
         {
             _isPlaced = false;
-
-            if (_pool != null)
-            {
-                _pool.Release(this);
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
+            _nearestSurface = null;
         }
 
         private void PlaceOnSurface()
         {
-            if (_nearestSurface == null)
-            {
-                return;
-            }
+            if (_nearestSurface == null) return;
 
             _isPlaced = true;
             _nearestSurface.PlaceItem(gameObject, _itemData);
@@ -98,6 +84,12 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
             {
                 _nearestSurface = null;
             }
+        }
+
+        private void OnDisable()
+        {
+            // защита от "липкого" surface, если объект выключат/уничтожат в триггере
+            _nearestSurface = null;
         }
     }
 }

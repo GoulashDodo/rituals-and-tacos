@@ -59,25 +59,35 @@ namespace _game.Scripts.Game.Root.Input.MouseClickable
             }
         }
 
+        [SerializeField] private int _maxHits = 16;
+        private Collider2D[] _hitBuffer;
+
+        private void Awake()
+        {
+            _hitBuffer = new Collider2D[_maxHits];
+        }
+
         private void HandleLeftMouseReleased(InputAction.CallbackContext context)
         {
-            
             if (!TryGetMouseWorldPoint(out var worldPoint))
-            {
                 return;
-            }
 
-            var hit = Physics2D.OverlapPoint(worldPoint);
-            if (hit == null)
-            {
+            var hits = Physics2D.OverlapPointAll(worldPoint);
+            if (hits == null || hits.Length == 0)
                 return;
-            }
 
-            if (hit.TryGetComponent<ILeftButtonReleasable>(out var clickable))
+            for (int i = 0; i < hits.Length; i++)
             {
-                clickable.OnLeftButtonReleased(worldPoint);
+                var hit = hits[i];
+                if (hit == null) continue;
+
+                if (hit.TryGetComponent<ILeftButtonReleasable>(out var releasable))
+                {
+                    releasable.OnLeftButtonReleased(worldPoint);
+                }
             }
         }
+
 
         private bool TryGetMouseWorldPoint(out Vector3 worldPoint)
         {

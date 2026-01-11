@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e6af36feaa6ea4fad3ec546c18f73f, type: 3}
+  m_Name: Spirit Blessing
+  m_EditorClassIdentifier: 
+  _riteDifficulty: 2
+  _riteName: Spirit Blessing
+  _components:
+  - RequiredItem: {fileID: 11400000, guid: 3a7a8ee34bd2c5240a1911a90a39c2fb, type: 2}
+    Count: 1
+  - RequiredItem: {fileID: 11400000, guid: 6ce94f2ba715e1c4896ac5a308e270eb, type: 2}
+    Count: 3
+  _cassetteForRite: {fileID: 0}
