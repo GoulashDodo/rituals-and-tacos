@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Level_Babysitting
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Levels.LevelSettings
   <TypeId>k__BackingField: Level_Babysitting
-  <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
+  <Icon>k__BackingField: {fileID: 4222034407831176853, guid: 637fc461039237a4db79fa98a8e26be3, type: 3}
   <UnlockedByDefault>k__BackingField: 0
   <Title>k__BackingField: Babysitter
-  <TargetScoreCount>k__BackingField: 20
+  <TargetScoreCount>k__BackingField: 10
   <LevelRitualPool>k__BackingField: {fileID: 11400000, guid: 2e5924c1f64c74143a359bea2c1a0771, type: 2}
   <MovementData>k__BackingField: {fileID: 11400000, guid: 871ae5c3ff3fb2f4ea911cd1c2469b6e, type: 2}
   <AmountOfLivesOnLevel>k__BackingField: 5

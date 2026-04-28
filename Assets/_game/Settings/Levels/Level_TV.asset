@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Level_TV
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Gameplay.Rituals.Levels.LevelSettings
   <TypeId>k__BackingField: Level_TV
-  <Icon>k__BackingField: {fileID: 6053666157803343156, guid: 74a0de4332fb97a45b1cdcc69478e701, type: 3}
+  <Icon>k__BackingField: {fileID: 264878986935295201, guid: 757f4b199e903c64faca877d7e15c22f, type: 3}
   <UnlockedByDefault>k__BackingField: 0
   <Title>k__BackingField: Get your free TVs!
-  <TargetScoreCount>k__BackingField: 25
+  <TargetScoreCount>k__BackingField: 13
   <LevelRitualPool>k__BackingField: {fileID: 11400000, guid: 23a2f980fea85304eb7392fdae249897, type: 2}
   <MovementData>k__BackingField: {fileID: 11400000, guid: 871ae5c3ff3fb2f4ea911cd1c2469b6e, type: 2}
   <AmountOfLivesOnLevel>k__BackingField: 5
