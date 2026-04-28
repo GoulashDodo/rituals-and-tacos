@@ -1,20 +1,17 @@
 using System.Collections;
-using _game.Scripts.Common.Architecture;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
 {
-    public class MusicManager : Singleton<MusicManager>
+    public class MusicManager : MonoBehaviour
     {
         private AudioSource _musicSource;
         private AudioMixerGroup _mixerGroup;
         private const float FadeDuration = 1.5f;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
             if (_musicSource) return;
             
             

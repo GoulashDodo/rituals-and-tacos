@@ -19,6 +19,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         
         private readonly LevelSettings _levelSettings;
         private readonly RitualService _ritualService;
+        private readonly PauseController _pauseController;
         private readonly ILevelProgressionService _levelProgressionService;
         private readonly IWinCondition _winCondition;
         private readonly ILoseCondition _loseCondition;
@@ -32,14 +33,15 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
             RitualService ritualService,
             ILevelProgressionService levelProgressionService,
             [Inject(Id = "WinCondition")] IWinCondition winCondition,
-            [Inject(Id = "LoseCondition")] ILoseCondition loseCondition)
+            [Inject(Id = "LoseCondition")] ILoseCondition loseCondition, PauseController pauseController)
         {
             _levelSettings = levelSettings;
             _ritualService = ritualService;
             _levelProgressionService = levelProgressionService;
             _winCondition = winCondition;
             _loseCondition = loseCondition;
-            
+            _pauseController = pauseController;
+
             Initialize();
         }
 
@@ -52,7 +54,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Levels
         public void StartLevel()
         {
             //TODO: Change this
-            PauseController.Instance.ResumeGame();
+            _pauseController.ResumeGame();
             _levelSettings.MovementData.ResetSpeed();
 
             _ritualService.SetRandomRite();

@@ -36,6 +36,7 @@ namespace _game.Scripts.Game.Root.Installers
         {
             Container.Bind<GameInput>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<MouseClickHandler>().AsSingle().NonLazy();
+            Container.Bind<PauseController>().AsSingle().NonLazy();
             Container.Bind<PauseService>().AsSingle().NonLazy();
         }
 
@@ -51,8 +52,8 @@ namespace _game.Scripts.Game.Root.Installers
 
         private void BindAudio()
         {
-            SoundFXManager.Instance.SetMixerGroup(_soundFxMixerGroup);
-            MusicManager.Instance.SetMixerGroup(_musicMixerGroup);
+            //SoundFXManager.Instance.SetMixerGroup(_soundFxMixerGroup);
+            //MusicManager.Instance.SetMixerGroup(_musicMixerGroup);
         }
     }
 }

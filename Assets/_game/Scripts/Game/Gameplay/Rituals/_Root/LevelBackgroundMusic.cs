@@ -24,7 +24,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals._Root
         {
             _level.StartLevel();
 
-            MusicManager.Instance.PlayMusic(_backgroundMusic);
+            //MusicManager.Instance.PlayMusic(_backgroundMusic);
         }
 
     }

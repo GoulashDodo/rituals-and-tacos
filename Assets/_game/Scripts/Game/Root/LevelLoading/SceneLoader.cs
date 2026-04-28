@@ -24,10 +24,12 @@ namespace _game.Scripts.Game.Root.LevelLoading
         private readonly float _fadeInDuration;
 
         private bool _isLoading;
+        private readonly PauseController _pauseController;
 
-        [Inject]
-        public SceneLoader(FadeCanvas fadeCanvas)
+        public SceneLoader(FadeCanvas fadeCanvas, PauseController pauseController)
         {
+            _pauseController =  pauseController;
+            
             _fadeCanvas = fadeCanvas;
             _fadeOutDuration = 1f;
             _fadeInDuration = 1f;
@@ -118,7 +120,7 @@ namespace _game.Scripts.Game.Root.LevelLoading
 
         private IEnumerator FadeOut()
         {
-            PauseController.Instance.PauseGame();
+            _pauseController.PauseGame();
 
             yield return _fadeCanvas.Fade(1f, _fadeOutDuration);
 
@@ -131,7 +133,7 @@ namespace _game.Scripts.Game.Root.LevelLoading
 
             yield return _fadeCanvas.Fade(0f, _fadeInDuration);
 
-            PauseController.Instance.ResumeGame();
+            _pauseController.ResumeGame();
         }
 
         private static IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode)

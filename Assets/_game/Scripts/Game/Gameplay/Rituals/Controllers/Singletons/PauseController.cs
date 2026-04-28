@@ -1,26 +1,20 @@
-using _game.Scripts.Common.Architecture;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
 {
-    public class PauseController : Singleton<PauseController>
+    public class PauseController 
     {
 
         public bool IsPaused => _isPaused;
 
-        public UnityEvent OnGamePaused;
-        public UnityEvent OnGameResumed;
+        public event Action GamePaused;
+        public event Action GameResumed;
 
         private bool _isPaused = false;
 
-        protected override void Awake()
-        {
-            base.Awake();
 
-            OnGamePaused ??= new UnityEvent();
-            OnGameResumed ??= new UnityEvent();
-        }
 
 
         public void TogglePause()
@@ -41,7 +35,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
 
             _isPaused = true;
             Time.timeScale = 0f;
-            OnGamePaused?.Invoke();
+            GamePaused?.Invoke();
         }
 
         public void ResumeGame()
@@ -50,7 +44,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
 
             _isPaused = false;
             Time.timeScale = 1f;
-            OnGameResumed?.Invoke();
+            GameResumed?.Invoke();
         }
     }
 }

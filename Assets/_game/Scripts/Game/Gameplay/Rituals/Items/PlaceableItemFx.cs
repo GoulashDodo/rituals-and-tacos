@@ -50,7 +50,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
 
         private void ShowParticle()
         {
-            SoundFXManager.Instance.PlaySoundFXClip(_dropAudio);
+            //SoundFXManager.Instance.PlaySoundFXClip(_dropAudio);
 
             if (_particlePrefab == null)
             {
@@ -81,7 +81,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Items
 
         private void PlayPlaceOnAltarSound()
         {
-            SoundFXManager.Instance.PlaySoundFXClip(_placeOnAltarAudio);
+            //SoundFXManager.Instance.PlaySoundFXClip(_placeOnAltarAudio);
         }
     }
 }

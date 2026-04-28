@@ -67,8 +67,7 @@ namespace _game.Scripts.Game.Gameplay.Rituals.LevelSpecial
         {
             if (_eatingSound != null)
             {
-                Debug.Log("Wdaw");
-                SoundFXManager.Instance.PlaySoundFXClip(_eatingSound);
+                //SoundFXManager.Instance.PlaySoundFXClip(_eatingSound);
             }
         }
     }

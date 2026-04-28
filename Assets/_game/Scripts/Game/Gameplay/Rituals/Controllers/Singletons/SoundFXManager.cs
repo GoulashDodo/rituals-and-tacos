@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using _game.Scripts.Common.Architecture;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
@@ -8,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
 {
-    public class SoundFXManager : Singleton<SoundFXManager>
+    public class SoundFXManager : MonoBehaviour
     {
         [SerializeField] private int _poolSize = 30;
 
@@ -17,9 +16,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
         private ObjectPool<AudioSource> _audioPool;
         private readonly List<AudioSource> _activeSources = new List<AudioSource>();
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -27,7 +25,6 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
         {
             _mixerGroup = mixerGroup;
 
-            // Если пул уже был создан, можно просто обновить mixer у существующих источников
             if (_audioPool != null)
             {
                 foreach (var s in _activeSources)
@@ -145,9 +142,8 @@ namespace _game.Scripts.Game.Gameplay.Rituals.Controllers.Singletons
             }
         }
 
-        protected override void OnDestroy()
+        private void OnDestroy()
         {
-            base.OnDestroy();
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }

@@ -24,11 +24,13 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
         private Level _level;
         private Coroutine _sequenceRoutine;
         private bool _shown;
+        private PauseController _pauseController;
 
         [Inject]
-        public void Construct(Level level)
+        public void Construct(Level level, PauseController pauseController)
         {
             _level = level;
+            _pauseController = pauseController;
         }
 
         private void Awake()
@@ -88,16 +90,16 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
 
         private IEnumerator WinSequenceRoutine()
         {
-            if (PauseController.Instance.IsPaused)
+            if (_pauseController.IsPaused)
             {
-                PauseController.Instance.ResumeGame();
+                _pauseController.ResumeGame();
             }
 
             yield return FadeFlashRoutine(0f, 1f, _flashInDuration);
 
             yield return TransitionRoutine();
 
-            PauseController.Instance.PauseGame();
+            _pauseController.PauseGame();
 
             if (_winPanelCanvasGroup != null)
             {

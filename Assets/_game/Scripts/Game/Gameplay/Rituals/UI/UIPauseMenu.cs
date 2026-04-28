@@ -10,24 +10,20 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
         [SerializeField] private GameObject _pauseMenuUI;
 
         private PauseService _pauseService;
+        private PauseController _pauseController;
 
         [Inject]
-        private void Initialize(PauseService pauseService)
+        private void Initialize(PauseService pauseService, PauseController pauseController)
         {
             _pauseService = pauseService;
+            _pauseController = pauseController;
         }
 
         private void OnEnable()
         {
-            if (PauseController.Instance != null)
-            {
-                _pauseService.OnPauseMenuOpenRequested += ShowPauseMenu;
-                _pauseService.OnPauseMenuCloseRequested += HidePauseMenu;
-            }
-            else
-            {
-                Debug.LogWarning("PauseController instance is missing");
-            }
+            _pauseService.OnPauseMenuOpenRequested += ShowPauseMenu;
+            _pauseService.OnPauseMenuCloseRequested += HidePauseMenu;
+            
         }
 
         private void Awake()
@@ -43,11 +39,13 @@ namespace _game.Scripts.Game.Gameplay.Rituals.UI
 
         private void ShowPauseMenu()
         {
+            _pauseController.PauseGame();
             _pauseMenuUI.SetActive(true);
         }
 
-        private void HidePauseMenu()
+        public void HidePauseMenu()
         {
+            _pauseController.ResumeGame();
             _pauseMenuUI.SetActive(false);
         }
     }
