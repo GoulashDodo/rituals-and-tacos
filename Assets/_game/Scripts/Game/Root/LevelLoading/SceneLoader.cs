@@ -15,14 +15,16 @@ namespace _game.Scripts.Game.Root.LevelLoading
         void LoadSingleThenAdditive(string sceneName, string additiveSceneName);
         bool IsLoaded(string sceneName);
     }
-    
+
     public class SceneLoader : ISceneLoader
     {
         private readonly FadeCanvas _fadeCanvas;
-        
+
         private readonly float _fadeOutDuration;
         private readonly float _fadeInDuration;
-        
+
+        private bool _isLoading;
+
         [Inject]
         public SceneLoader(FadeCanvas fadeCanvas)
         {
@@ -31,30 +33,50 @@ namespace _game.Scripts.Game.Root.LevelLoading
             _fadeInDuration = 1f;
         }
 
-       public void LoadSingle(string sceneName)
+        public void LoadSingle(string sceneName)
         {
-            _fadeCanvas.StartCoroutine(LoadSingleRoutine(sceneName));
+            TryStartLoading(LoadSingleRoutine(sceneName));
         }
 
         public void LoadAdditive(string sceneName)
         {
-            _fadeCanvas.StartCoroutine(LoadAdditiveRoutine(sceneName));
+            TryStartLoading(LoadAdditiveRoutine(sceneName));
         }
 
         public void Unload(string sceneName)
         {
-            _fadeCanvas.StartCoroutine(UnloadRoutine(sceneName));
+            TryStartLoading(UnloadRoutine(sceneName));
         }
 
         public void LoadSingleThenAdditive(string singleSceneName, string additiveSceneName)
         {
-            _fadeCanvas.StartCoroutine(LoadSingleThenAdditiveRoutine(singleSceneName, additiveSceneName));
+            TryStartLoading(LoadSingleThenAdditiveRoutine(singleSceneName, additiveSceneName));
         }
-        
+
         public bool IsLoaded(string sceneName)
         {
             var scene = SceneManager.GetSceneByName(sceneName);
             return scene.isLoaded;
+        }
+
+        private void TryStartLoading(IEnumerator loadingRoutine)
+        {
+            if (_isLoading)
+            {
+                Debug.LogWarning("SceneLoader: scene loading is already in progress.");
+                return;
+            }
+
+            _fadeCanvas.StartCoroutine(LoadingWrapperRoutine(loadingRoutine));
+        }
+
+        private IEnumerator LoadingWrapperRoutine(IEnumerator loadingRoutine)
+        {
+            _isLoading = true;
+
+            yield return loadingRoutine;
+
+            _isLoading = false;
         }
 
         private IEnumerator LoadSingleRoutine(string sceneName)
@@ -87,7 +109,7 @@ namespace _game.Scripts.Game.Root.LevelLoading
         private IEnumerator LoadSingleThenAdditiveRoutine(string singleSceneName, string additiveSceneName)
         {
             yield return FadeOut();
-            
+
             yield return LoadSceneAsync(singleSceneName, LoadSceneMode.Single);
             yield return LoadSceneAsync(additiveSceneName, LoadSceneMode.Additive);
 
@@ -99,12 +121,14 @@ namespace _game.Scripts.Game.Root.LevelLoading
             PauseController.Instance.PauseGame();
 
             yield return _fadeCanvas.Fade(1f, _fadeOutDuration);
+
             _fadeCanvas.SetAlpha(1f);
         }
 
         private IEnumerator FadeIn()
         {
             _fadeCanvas.SetAlpha(1f);
+
             yield return _fadeCanvas.Fade(0f, _fadeInDuration);
 
             PauseController.Instance.ResumeGame();
@@ -112,14 +136,15 @@ namespace _game.Scripts.Game.Root.LevelLoading
 
         private static IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode)
         {
-            var op = SceneManager.LoadSceneAsync(sceneName, mode);
-            if (op == null)
+            var operation = SceneManager.LoadSceneAsync(sceneName, mode);
+
+            if (operation == null)
             {
                 Debug.LogError($"SceneLoader: LoadSceneAsync returned null for '{sceneName}'.");
                 yield break;
             }
 
-            while (!op.isDone)
+            while (!operation.isDone)
             {
                 yield return null;
             }
@@ -128,19 +153,21 @@ namespace _game.Scripts.Game.Root.LevelLoading
         private static IEnumerator UnloadSceneAsync(string sceneName)
         {
             var scene = SceneManager.GetSceneByName(sceneName);
+
             if (!scene.isLoaded)
             {
                 yield break;
             }
 
-            var op = SceneManager.UnloadSceneAsync(scene);
-            if (op == null)
+            var operation = SceneManager.UnloadSceneAsync(scene);
+
+            if (operation == null)
             {
                 Debug.LogError($"SceneLoader: UnloadSceneAsync returned null for '{sceneName}'.");
                 yield break;
             }
 
-            while (!op.isDone)
+            while (!operation.isDone)
             {
                 yield return null;
             }
