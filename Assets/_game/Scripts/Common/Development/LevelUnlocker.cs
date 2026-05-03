@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using _game.Scripts.Game.Gameplay.Rituals.Levels;
-using _game.Scripts.Game.Gameplay.Rituals.Levels.Save;
+using _game.Scripts.Game._2.Gameplay.Levels;
+using _game.Scripts.Game._2.Gameplay.Levels.Save;
+using _game.Scripts.Game._2.Gameplay.Levels.Settings;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

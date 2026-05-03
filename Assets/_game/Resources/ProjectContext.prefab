@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1391282582609456049}
   - component: {fileID: 446436526785262338}
   - component: {fileID: 2687564413668299771}
+  - component: {fileID: 2150609724396109877}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -46,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: e18f45728dfad3140b38d798817b06da, type: 2}
   _monoInstallers:
+  - {fileID: 2150609724396109877}
   - {fileID: 446436526785262338}
   - {fileID: 2687564413668299771}
   _installerPrefabs: []
@@ -76,7 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0272777e225215340bd50a925f73de96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeCanvasPrefab: {fileID: 2670723915706454905, guid: 20ab69f24cda5dd4f8b752b5fd7b372e, type: 3}
   _selectedLevelRuntime: {fileID: 11400000, guid: 97e6a84e2075c2d469d1a0163a3b0723, type: 2}
   _soundFxMixerGroup: {fileID: -8435302350585249093, guid: 3d21055c8cdbe12408e33e24ab2910b4, type: 2}
   _musicMixerGroup: {fileID: -3080673572436387371, guid: 3d21055c8cdbe12408e33e24ab2910b4, type: 2}
@@ -93,3 +95,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Root._Root.SaveInstaller
   _allLevels: {fileID: 11400000, guid: 28d6e5a77e9d97c4d97ea6111933103c, type: 2}
+--- !u!114 &2150609724396109877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6263783030972569906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a025d2d0fa24e8bbd6a6257fc1c334f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game.Root.Installers.GlobalUIInstaller
+  _fadeCanvasPrefab: {fileID: 2670723915706454905, guid: 20ab69f24cda5dd4f8b752b5fd7b372e, type: 3}

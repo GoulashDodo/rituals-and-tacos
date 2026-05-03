@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9ec25b1a424ff0bdacfaf6a764096f, type: 3}
+  m_Name: Gameplay Settings
+  m_EditorClassIdentifier: Assembly-CSharp::_game.Scripts.Game._2.Gameplay._root.Settings.GameplaySettings
+  <AllItemsSettings>k__BackingField: {fileID: 11400000, guid: 2e92752a34312a24e8724125042f5cc0, type: 2}
